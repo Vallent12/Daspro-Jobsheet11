@@ -21,11 +21,26 @@ public class BioskopWithScanner03 {
             if (menu == 1) {
                 System.out.print("Masukkan nama: ");
                 nama = sc.nextLine();
-                System.out.print("Masukkan baris: ");
-                baris = sc.nextInt();
-                System.out.print("Masukkan kolom: ");
-                kolom = sc.nextInt();
-                sc.nextLine();
+
+                while (true) {
+                    System.out.print("Masukkan baris: ");
+                    baris = sc.nextInt();
+                    System.out.print("Masukkan kolom: ");
+                    kolom = sc.nextInt();
+                    sc.nextLine();
+
+                    if (baris < 1 || baris > penonton.length || kolom < 1 || kolom > penonton[0].length) {
+                        System.out.println("Nomor baris/kolom tidak tersedia. Coba lagi!\n");
+                        continue;
+                    }
+
+                    if (penonton[baris -1][kolom -1] != null) {
+                        System.out.println("Kursi sudak terisi! Pilih kursi lain.\n");
+                        continue;
+                    }
+
+                    break;
+                }
 
                 penonton[baris -1][kolom -1] = nama;
 
